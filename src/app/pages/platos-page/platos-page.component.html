@@ -1,0 +1,36 @@
+<div class="parent">
+  <app-search-bar (search)="handleSearch($event)"></app-search-bar>
+  <app-menu-form [listaMenu]="listaParaMenu"></app-menu-form>
+  <div
+    class="cartas"
+    *ngFor="let plato of listaDePlatos | filter: filtro_valor"
+  >
+    <ng-container *ngIf="cargando; else noPlato">
+      <mat-card class="template-card">
+        <mat-card-header>
+          <mat-card-title> {{ plato.title }} </mat-card-title>
+        </mat-card-header>
+        <img
+          class="image"
+          routerLink="/platos/details"
+          [state]="{ data: plato }"
+          mat-card-image
+          src="{{ plato.image }} "
+          alt="Plato de comida"
+        />
+        <mat-card-content>
+          <p>
+            Descripcion: is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="enviarAMenu(plato)">Añadir plato</button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+
+    <ng-template #noPlato> </ng-template>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<ng-container *ngIf="listaMenu; else noHayPlato">
+  <form>
+    <mat-card>
+      <h2>Armar Menu</h2>
+      <ul>
+        <li *ngFor="let plato of listaMenu">
+          {{ plato.title }}
+        </li>
+      </ul>
+      <button mat-button (click)="eliminarPlato()">Quitar plato</button>
+      <button mat-button (click)="checkMenu()">Crear menu</button>
+    </mat-card>
+  </form>
+</ng-container>
+
+<ng-template #noHayPlato>
+  <h3>Cargando Menu</h3>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-container *ngFor="let menusListas of listaDeMenu; let i = index">
+  <form>
+    <mat-card>
+      <ul>
+        <h3>Menu - {{ i + 1 }}</h3>
+        <li *ngFor="let menuAux of menusListas">
+          <p>
+            {{ menuAux.title }}
+          </p>
+        </li>
+      </ul>
+    </mat-card>
+  </form>
+</ng-container>

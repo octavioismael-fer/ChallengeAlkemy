@@ -1,0 +1,14 @@
+
+
+.cartas{ 
+    width: 300px;
+    height: 500px;
+    margin: 1em;
+    padding: 1em;
+    float: left;
+}
+
+.mat-card-header{
+    display: flex;
+    width: 100%;
+}

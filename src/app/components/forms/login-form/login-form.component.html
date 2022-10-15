@@ -1,0 +1,52 @@
+<div class="box-form">
+  <div class="left">
+    <div class="overlay">
+      <h1>A la carta.</h1>
+      <p>Una mezcla de sabores y aromas increibles.</p>
+      <span> </span>
+    </div>
+  </div>
+
+  <div class="right">
+    <h5>Iniciar Sesión</h5>
+    <p></p>
+    <div class="inputs">
+      <!-- CAMPOS NUEVOS -->
+      <form [formGroup]="formLogin" (submit)="submitLogin()">
+        <!-- CAMPO EMAIL CON VALIDATORS -->
+        <input type="email" placeholder="Email" formControlName="email" />
+
+        <mat-error *ngIf="email?.errors?.['required'] && email?.touched">
+          Este campo es obligatorio.
+        </mat-error>
+
+        <mat-error *ngIf="email?.errors?.['email'] && email?.touched">
+          El formato no es correcto.
+        </mat-error>
+
+        <br />
+        <!-- CAMPO PASSWORD CON VALIDATOR -->
+        <input
+          type="password"
+          placeholder="Contraseña"
+          formControlName="password"
+        />
+
+        <mat-error *ngIf="password?.errors?.['required'] && password?.touched">
+          Este campo es obligatorio.
+        </mat-error>
+
+        <br /><br />
+
+        <div class="remember-me--forget-password">
+          <!-- Angular -->
+
+          <!-- <a>¿Olvidaste tu contraseña?</a> -->
+        </div>
+
+        <br />
+        <button [disabled]="formLogin.invalid">Ingresar</button>
+      </form>
+    </div>
+  </div>
+</div>
